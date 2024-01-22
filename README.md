@@ -1,6 +1,7 @@
 This is the initial README for this project 
 
-Details about project incoming.
+Details about the project can be found in our initial proposal:
+https://docs.google.com/document/d/1E7uFqbcq4rbA7CDt9fvQErw7aQOaYISQcTtDdHzvz8g/edit?usp=sharing
 
 ## Install
 
