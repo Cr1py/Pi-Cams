@@ -1,0 +1,38 @@
+
+# Set WT_BASE to the location of your Wt installation
+ifdef WT_BASE
+WT_BASE := $(WT_BASE)
+else
+WT_BASE := /usr/local/include/Wt
+endif
+
+
+# The name of the final executable
+TARGET = homesecurity
+CXXFLAGS=--std=c++14 -I$(WT_BASE)/include 
+LDFLAGS=-L/usr/lib -Wl,-rpath,$(WT_BASE)/lib -lwthttp -lwt -lboost_thread-mt -lboost_atomic-mt -lboost_filesystem -lwtdbo -lwtdbosqlite3
+
+# Compiler to be used
+CXX = g++
+
+# Source directory containing the subdirectories
+SRC_DIR = backend
+
+# Find all the C++ files in the source directory and its subdirectories
+SOURCES = $(shell find $(SRC_DIR) -name '*.cpp')
+DEPS = $(shell find $(SRC_DIR) -name '*.h')
+
+# Object files generated from the source files
+OBJECTS = $(SOURCES:.cpp=.o)
+
+# The rule to generate object files from source files
+%.o: %.cpp $(DEPS)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# The rule to create the final executable
+$(TARGET): $(OBJECTS)
+	$(CXX)  -v $(OBJECTS) -o $(TARGET) $(LDFLAGS)
+	
+# The rule to clean up all generated files
+clean:
+	rm -f $(OBJECTS) $(TARGET)
