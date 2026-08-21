@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspberry Pi Camera Live Stream</title>
+</head>
+<body>
+    <h1>Raspberry Pi Camera Live Stream</h1>
+    <img src="{{ url_for('video_feed') }}" alt="Camera Stream">
+    <br>
+    <button onclick="endStream()">End Stream</button>
+    <button onclick="startStream()">Restart Stream</button>
+
+    <script>
+        function endStream() {
+            // Send an HTTP request to the /end_stream endpoint
+            fetch('/end_stream').then(response => {
+                if (response.ok) {
+                    console.log('Stream ended successfully');
+                } else {
+                    console.error('Failed to end stream');
+                }
+            });
+        }
+
+        function startStream() {
+            // Send an HTTP request to the /start_stream endpoint
+            fetch('/start_stream').then(response => {
+                if (response.ok) {
+                    console.log('Stream started successfully');
+                } else {
+                    console.error('Failed to start stream');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
