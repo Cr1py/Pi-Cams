@@ -1,6 +1,6 @@
-This is the initial README for this project 
+PiCams is a surveillance system application that uses facial recognition to detect and send alerts whenever there is motion within its line of sight.
 
-Details about the project can be found in our initial proposal:
+For more details about the project can be found in our initial proposal:
 https://docs.google.com/document/d/1E7uFqbcq4rbA7CDt9fvQErw7aQOaYISQcTtDdHzvz8g/edit?usp=sharing
 
 ## Install
